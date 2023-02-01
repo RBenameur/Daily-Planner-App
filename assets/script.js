@@ -100,8 +100,8 @@ function init () {
         currentBtn.on('click', submitText);
     };
 
+    setInterval(displayDate, 1000);
+
 };
 
 init();
-
-setInterval(displayDate, 1000);
