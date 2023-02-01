@@ -3,7 +3,7 @@ var dataDisplayEl = $('#currentDay');
 var container = $('.container');
 
 var btnObj = {
-    btn9am:  $('#9AM-btn'),
+    btn9am: $('#9AM-btn'),
     btn10am: $('#10AM-btn'),
     btn11am: $('#11AM-btn'),
     btn12pm: $('#12PM-btn'),
@@ -29,6 +29,16 @@ function getLocalStorage () {
 
 //function to load data from local storage onto page
 function loadLocalStorage () {
+
+    var toDo = getLocalStorage();
+
+    for (item in toDo) {
+        console.log(item);
+        var currentTxtArea = $(`#${item}`);
+
+        console.log(toDo[item]);
+        currentTxtArea.val(toDo[item]);
+    }
 
 }
 
@@ -58,7 +68,9 @@ function init () {
     loadLocalStorage();
 
     for (btn in btnObj) {
+
         var currentBtn = btnObj[btn];
+
         currentBtn.on('click', submitText);
     };
 
