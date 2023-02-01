@@ -14,17 +14,6 @@ var btnObj = {
     btn5pm: $('#5PM-btn')
 };
 
-// var btn9am = $('#9AM-btn');
-// var btn10am = $('#10AM-btn');
-// var btn11am = $('#11AM-btn');
-// var btn12pm = $('#12PM-btn');
-// var btn1pm = $('#1PM-btn');
-// var btn2pm = $('#2PM-btn');
-// var btn3pm = $('#3PM-btn');
-// var btn4pm = $('#4PM-btn');
-// var btn5pm = $('#5PM-btn');
-
-
 
 //function displaying data
 function displayDate () {
@@ -32,23 +21,37 @@ function displayDate () {
     dataDisplayEl.text(currentDate);
 };
 
-//function to submit user input to local storage
+//function to get data from local storage to populate text area
+function getLocalStorage() {
+    //console.log('CODE PENDING');
+    var toDo = JSON.parse(localStorage.getItem('toDo')) || {};
+};
 
-function submitText () {
-    console.log('Clicked');
+//function to submit user input to local storage
+function submitText (event) {
+    //console.log('Clicked');
+    
+    getLocalStorage();
+
+    var eventID = $(this).attr("id").slice(0, -4);
+
+    //console.log(eventID);
+
+    var textarea = $(`#${eventID}`).val();
+
+   // console.log(textarea);
+
 }
 
+// function to initialise file
 function init () {
+
+    getLocalStorage();
 
     for (btn in btnObj) {
         var currentBtn = btnObj[btn];
-
         currentBtn.on('click', submitText);
-
-    // console.log(btnObj[btn]);
     };
-    // btn9am.on('click',submitText);
-    // btn10am.on('click',submitText);
 
 };
 
