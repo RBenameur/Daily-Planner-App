@@ -78,6 +78,12 @@ function submitText (event) {
 
    localStorage.setItem('toDo',JSON.stringify(toDo));
 
+   $('.jumbotron').append(`
+   <p>Appointment Added to <span class='time-block red-text'>localStorage</span>&#10004;
+   `);
+
+
+
 };
 
 // function to initialise file

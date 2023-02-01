@@ -21,16 +21,18 @@ textarea {
   border-bottom: 10px solid black;
 }
 
-/* have not used yet*/
 .description {
   white-space: pre-wrap;
   padding-left: 25px;
 }
 
-/* have not used yet */
 .time-block {
   text-align: center;
   border-radius: 15px;
+}
+
+.red-text {
+  color: red;
 }
 
 .container {
