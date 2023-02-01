@@ -22,16 +22,21 @@ function displayDate () {
 };
 
 //function to get data from local storage to populate text area
-function getLocalStorage() {
+function getLocalStorage () {
     //console.log('CODE PENDING');
-    var toDo = JSON.parse(localStorage.getItem('toDo')) || {};
+    return JSON.parse(localStorage.getItem('toDo')) || {};
 };
+
+//function to load data from local storage onto page
+function loadLocalStorage () {
+
+}
 
 //function to submit user input to local storage
 function submitText (event) {
     //console.log('Clicked');
     
-    getLocalStorage();
+    var toDo = getLocalStorage();
 
     var eventID = $(this).attr("id").slice(0, -4);
 
@@ -41,12 +46,16 @@ function submitText (event) {
 
    // console.log(textarea);
 
+   toDo[eventID] = textarea;
+
+   localStorage.setItem('toDo',JSON.stringify(toDo));
+
 }
 
 // function to initialise file
 function init () {
 
-    getLocalStorage();
+    loadLocalStorage();
 
     for (btn in btnObj) {
         var currentBtn = btnObj[btn];
