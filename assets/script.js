@@ -14,6 +14,29 @@ var btnObj = {
     btn5pm: $('#5PM-btn')
 };
 
+//function styling based on past present of future
+
+function timeStyling () {
+    var currentTime = moment().format('LT');
+
+    for (btn in btnObj) {
+
+        var getBtnID = btn.slice(3, -2) + btn.slice(-2).toUpperCase();
+
+        $(`#${getBtnID}`).attr('class', 'row past');
+
+        var slicedTime = currentTime.slice(0, -6) + currentTime.slice(-2);
+
+        if (slicedTime == getBtnID) {
+            $(`#${slicedTime}`).attr('class', 'row present');
+            //console.log($(`#${slicedTime}`))
+            //console.log(slicedTime);
+            //console.log(getBtnID);
+            //console.log('match');
+            break;
+        }
+    }
+};
 
 //function displaying data
 function displayDate () {
@@ -21,6 +44,46 @@ function displayDate () {
     var currentDate = moment().format('dddd, MMMM Do');
 
     dataDisplayEl.text(currentDate);
+
+    // var currentTime = moment().format('LT');
+
+    // //currentTime.toLowerCase();
+
+    // //console.log(currentTime);
+
+    // for (btn in btnObj) {
+
+    //     var getBtnID = btn.slice(3, -2) + btn.slice(-2).toUpperCase();
+
+    //     var slicedTime = currentTime.slice(0, -6) + currentTime.slice(-2);
+
+    //    // console.log(slicedTime);
+
+    //    // console.log(getBtnID);
+
+    //     //console.log(getBtnID);
+
+    // //     getBtnID.toUpperCase();
+
+    // //    console.log(slicedTime);
+
+    // //    console.log(getBtnID);
+
+    //     //console.log(currentTime);
+
+    //     if (slicedTime == getBtnID) {
+    //         $(`#${slicedTime}`).attr('class', 'row present');
+    //         console.log($(`#${slicedTime}`))
+    //         console.log(slicedTime);
+    //         console.log(getBtnID);
+    //         console.log('match');
+
+    //         break;
+    //     }
+    // }
+
+    timeStyling();
+    
 };
 
 //function to get data from local storage to populate text area
@@ -35,10 +98,10 @@ function loadLocalStorage () {
     var toDo = getLocalStorage();
 
     for (item in toDo) {
-        console.log(item);
+        //console.log(item);
         var currentTxtArea = $(`#${item}`);
 
-        console.log(toDo[item]);
+        //console.log(toDo[item]);
         currentTxtArea.val(toDo[item]);
     };
 
@@ -53,7 +116,7 @@ function submitText (event) {
 
     var textarea = $(`#${eventID}`).val();
 
-   toDo[eventID] = textarea;
+    toDo[eventID] = textarea;
 
    localStorage.setItem('toDo',JSON.stringify(toDo));
 
@@ -63,6 +126,8 @@ function submitText (event) {
 function init () {
 
     loadLocalStorage();
+
+    timeStyling();
 
     for (btn in btnObj) {
 
