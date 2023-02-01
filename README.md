@@ -15,7 +15,7 @@ N/a
 
 ## Usage
 
-[Access the Daily Planner Application application](https://rbenameur.github.io/Daily-Planner-App "Link to deployed github page")
+[Access the Daily Planner Application](https://rbenameur.github.io/Daily-Planner-App "Link to deployed github page")
 
 Click in the text area of one of the hourly segments to begin editing the tasks to do during that time. Click the save icon adjacent to the hour you are editing to save the task to local storage.
 ![Screenshot of first half of daily planner page](./assets/img/Daily-planner-screenshot-top-of-page.PNG "Screenshot of first half of daily planner page")
