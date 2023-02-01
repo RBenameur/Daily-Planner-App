@@ -56,17 +56,16 @@ function loadLocalStorage () {
     var toDo = getLocalStorage();
 
     for (item in toDo) {
-        //console.log(item);
+        
         var currentTxtArea = $(`#${item}`);
 
-        //console.log(toDo[item]);
         currentTxtArea.val(toDo[item]);
     };
 
 };
 
 //function to submit user input to local storage
-function submitText (event) {
+function submitText () {
     
     var toDo = getLocalStorage();
 
