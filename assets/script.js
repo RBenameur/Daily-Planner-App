@@ -17,13 +17,15 @@ var btnObj = {
 
 //function displaying data
 function displayDate () {
+
     var currentDate = moment().format('dddd, MMMM Do');
+
     dataDisplayEl.text(currentDate);
 };
 
 //function to get data from local storage to populate text area
 function getLocalStorage () {
-    //console.log('CODE PENDING');
+
     return JSON.parse(localStorage.getItem('toDo')) || {};
 };
 
@@ -38,23 +40,18 @@ function loadLocalStorage () {
 
         console.log(toDo[item]);
         currentTxtArea.val(toDo[item]);
-    }
+    };
 
-}
+};
 
 //function to submit user input to local storage
 function submitText (event) {
-    //console.log('Clicked');
     
     var toDo = getLocalStorage();
 
     var eventID = $(this).attr("id").slice(0, -4);
 
-    //console.log(eventID);
-
     var textarea = $(`#${eventID}`).val();
-
-   // console.log(textarea);
 
    toDo[eventID] = textarea;
 
