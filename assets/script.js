@@ -14,6 +14,18 @@ var btnObj = {
     btn5pm: $('#5PM-btn')
 };
 
+
+//function displaying data
+function displayDate () {
+
+    var currentDate = moment().format('dddd, MMMM Do');
+
+    dataDisplayEl.text(currentDate);
+
+    timeStyling();
+    
+};
+
 //function styling based on past present or future plan
 function timeStyling () {
     var currentTime = moment().format('LT');
@@ -27,21 +39,29 @@ function timeStyling () {
         var slicedTime = currentTime.slice(0, -6) + currentTime.slice(-2);
 
         if (slicedTime == getBtnID) {
-            $(`#${slicedTime}`).attr('class', 'row present');
+            $(`#${getBtnID}`).attr('class', 'row present');
             break;
         };
     };
 };
 
-//function displaying data
-function displayDate () {
-
-    var currentDate = moment().format('dddd, MMMM Do');
-
-    dataDisplayEl.text(currentDate);
-
-    timeStyling();
+//function to submit user input to local storage
+function submitText () {
     
+    var toDo = getLocalStorage();
+
+    var eventID = $(this).attr("id").slice(0, -4);
+
+    var textarea = $(`#${eventID}`).val();
+
+    toDo[eventID] = textarea;
+
+   localStorage.setItem('toDo',JSON.stringify(toDo)); 
+
+   $('.localStorageContainer').html(`
+   <p>Appointment Added to <span class='time-block red-text'>localStorage</span>&#10004</p>
+   `);
+
 };
 
 //function to get data from local storage to populate text area
@@ -56,32 +76,11 @@ function loadLocalStorage () {
     var toDo = getLocalStorage();
 
     for (item in toDo) {
-        
+
         var currentTxtArea = $(`#${item}`);
 
         currentTxtArea.val(toDo[item]);
     };
-
-};
-
-//function to submit user input to local storage
-function submitText () {
-    
-    var toDo = getLocalStorage();
-
-    var eventID = $(this).attr("id").slice(0, -4);
-
-    var textarea = $(`#${eventID}`).val();
-
-    toDo[eventID] = textarea;
-
-   localStorage.setItem('toDo',JSON.stringify(toDo));
-
-   $('.jumbotron').append(`
-   <p>Appointment Added to <span class='time-block red-text'>localStorage</span>&#10004;
-   `);
-
-
 
 };
 
