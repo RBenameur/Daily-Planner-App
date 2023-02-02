@@ -33,12 +33,6 @@ function timeStyling () {
 
     for (var btn in btnObj) {
 
-        //console.log(btn);
-
-        //var getBtnID = btn.slice(3, -2) + btn.slice(-2).toUpperCase();
-
-        //console.log(getBtnID)
-
         $(`#${btn}`).attr('class', 'row past');
 
         var slicedTime = currentTime.slice(0, -6) + currentTime.slice(-2);
@@ -115,13 +109,6 @@ function init () {
     loadLocalStorage();
 
     timeStyling();
-
-    // for (var btn in btnObj) {
-
-    //     var currentBtn = btnObj[btn];
-
-    //     currentBtn.on('click', submitText);
-    // };
 
     setInterval(displayDate, 1000);
 
