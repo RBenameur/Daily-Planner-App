@@ -31,7 +31,7 @@ function timeStyling () {
 
     var currentTime = moment().format('LT');
 
-    for (btn in btnObj) {
+    for (var btn in btnObj) {
 
         //console.log(btn);
 
@@ -80,7 +80,7 @@ function loadLocalStorage () {
 
     var toDo = getLocalStorage();
 
-    for (item in toDo) {
+    for (var item in toDo) {
 
         var currentTxtArea = $(`#${item}`);
 
@@ -89,9 +89,23 @@ function loadLocalStorage () {
 
 };
 
-function loadPlanner(){
+function loadPlanner() {
 
-}
+    for (var hour in btnObj) {
+
+        var currentBtn = btnObj[hour];
+
+       // console.log(hour);
+        container.append(`
+        <label for="${hour}" class="hour description">${hour}</label>
+        <textarea id="${hour}" name="${hour}" class="row future"></textarea>
+        <button id="${currentBtn}" class="saveBtn"><i class="fas fa-save"></i></button>
+        `);
+
+        currentBtn.on('click', submitText);
+    };
+    
+};
 
 // function to initialise file
 function init () {
@@ -102,12 +116,12 @@ function init () {
 
     timeStyling();
 
-    for (btn in btnObj) {
+    // for (var btn in btnObj) {
 
-        var currentBtn = btnObj[btn];
+    //     var currentBtn = btnObj[btn];
 
-        currentBtn.on('click', submitText);
-    };
+    //     currentBtn.on('click', submitText);
+    // };
 
     setInterval(displayDate, 1000);
 
