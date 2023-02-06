@@ -3,15 +3,15 @@ var dataDisplayEl = $('#currentDay');
 var container = $('.container');
 
 var btnObj = {
-    '9AM': $('#9AM-btn'),
-    '10AM': $('#10AM-btn'),
-    '11AM': $('#11AM-btn'),
-    '12PM': $('#12PM-btn'),
-    '1PM': $('#1PM-btn'),
-    '2PM': $('#2PM-btn'),
-    '3PM': $('#PM-btn'),
-    '4PM': $('#4PM-btn'),
-    '5PM': $('#5PM-btn')
+    '9AM': '9AM-btn',
+    '10AM': '10AM-btn',
+    '11AM': '11AM-btn',
+    '12PM': '12PM-btn',
+    '1PM': '1PM-btn',
+    '2PM': '2PM-btn',
+    '3PM': '3PM-btn',
+    '4PM': '4PM-btn',
+    '5PM': '5PM-btn'
 };
 
 
@@ -85,18 +85,18 @@ function loadLocalStorage () {
 
 function loadPlanner() {
 
+
     for (var hour in btnObj) {
 
         var currentBtn = btnObj[hour];
 
-       // console.log(hour);
         container.append(`
         <label for="${hour}" class="hour description">${hour}</label>
         <textarea id="${hour}" name="${hour}" class="row future"></textarea>
         <button id="${currentBtn}" class="saveBtn"><i class="fas fa-save"></i></button>
         `);
 
-        currentBtn.on('click', submitText);
+       $(`#${currentBtn}`).on('click', submitText);
     };
     
 };
