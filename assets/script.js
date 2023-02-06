@@ -46,7 +46,6 @@ function timeStyling () {
 
 //function to submit user input to local storage
 function submitText () {
-    // console.log('clicked');
     
     var toDo = getLocalStorage();
 
@@ -89,14 +88,8 @@ function loadPlanner() {
 
     for (var hour in btnObj) {
 
-        var currentBtn = btnObj[`${hour}`];
+        var currentBtn = btnObj[hour];
 
-        // console.log(btnObj)
-
-        // console.log(hour)
-        // console.log(currentBtn)
-
-       // console.log(hour);
         container.append(`
         <label for="${hour}" class="hour description">${hour}</label>
         <textarea id="${hour}" name="${hour}" class="row future"></textarea>
